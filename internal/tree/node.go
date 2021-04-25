@@ -2,11 +2,11 @@ package tree
 
 type Node struct {
 	left    *Node
-	element interface{}
+	element int
 	right   *Node
 }
 
-func NewNode(left *Node, element interface{}, right *Node) Node {
+func NewNode(left *Node, element int, right *Node) Node {
 	return Node{
 		left:    left,
 		element: element,
@@ -22,11 +22,11 @@ func (n *Node) GetRight() *Node {
 	return n.right
 }
 
-func (n *Node) GetElement() interface{} {
+func (n *Node) GetElement() int {
 	return n.element
 }
 
-func (n *Node) SetElement(element interface{}) {
+func (n *Node) SetElement(element int) {
 	n.element = element
 }
 
