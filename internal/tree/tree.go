@@ -99,3 +99,28 @@ func (n *Node) find(element int) *Node {
 	}
 	return nil
 }
+
+func (t *Tree) Height() int {
+	if t.IsEmpty() {
+		return -1
+	}
+
+	return t.root.height(0)
+}
+
+func (n *Node) height(level int) int {
+	heightLeft := level
+	if n.left != nil {
+		heightLeft = n.left.height(heightLeft + 1)
+	}
+
+	heightRight := level
+	if n.right != nil {
+		heightRight = n.right.height(heightRight + 1)
+	}
+
+	if heightRight > heightLeft {
+		return heightRight
+	}
+	return heightLeft
+}

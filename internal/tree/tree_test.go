@@ -79,3 +79,39 @@ func TestTree_Find(t *testing.T) {
 		t.Errorf("Wrong find element return. It shouldn return nil.")
 	}
 }
+
+func TestTree_Height(t *testing.T) {
+	testTree := Tree{}
+
+	expected := -1
+	heightResult := testTree.Height()
+	if heightResult != expected {
+		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
+	}
+
+	testTree.Insert(20)
+	testTree.Insert(5)
+	testTree.Insert(15)
+
+	expected = 2
+	heightResult = testTree.Height()
+	if heightResult != expected {
+		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
+	}
+
+	testTree.Insert(17)
+
+	expected = 3
+	heightResult = testTree.Height()
+	if heightResult != expected {
+		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
+	}
+
+	testTree.Insert(18)
+
+	expected = 4
+	heightResult = testTree.Height()
+	if heightResult != expected {
+		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
+	}
+}
