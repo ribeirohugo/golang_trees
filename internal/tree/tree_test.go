@@ -76,7 +76,7 @@ func TestTree_Find(t *testing.T) {
 
 	findResult = testTree.Find(22)
 	if findResult != nil {
-		t.Errorf("Wrong find element return. It shouldn return nil.")
+		t.Errorf("Wrong find element return. It shouldn't return nil.")
 	}
 }
 
@@ -113,5 +113,37 @@ func TestTree_Height(t *testing.T) {
 	heightResult = testTree.Height()
 	if heightResult != expected {
 		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
+	}
+}
+
+func TestTree_Remove(t *testing.T) {
+	testTree := Tree{}
+
+	testTree.Insert(20)
+	testTree.Insert(5)
+	testTree.Insert(15)
+	testTree.Insert(17)
+	testTree.Insert(19)
+
+	testTree.Remove(19)
+	height := testTree.Height()
+	if height == 4 {
+		t.Errorf("Wrong height after removing element. Got: %d; Want: %d.", height, 4)
+	}
+
+	node := testTree.Find(19)
+	if node != nil {
+		t.Errorf("Wrong node returned after removing element. It shoud be nil.")
+	}
+
+	testTree.Remove(17)
+	height = testTree.Height()
+	if height == 3 {
+		t.Errorf("Wrong height after removing element. Got: %d; Want: %d.", height, 3)
+	}
+
+	node = testTree.Find(17)
+	if node != nil {
+		t.Errorf("Wrong node returned after removing element. It shoud be nil.")
 	}
 }

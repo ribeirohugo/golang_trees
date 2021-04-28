@@ -67,18 +67,50 @@ func (t *Tree) Remove(element int) {
 		return
 	}
 
-	t.root.remove(element)
+	t.root = remove(element, t.root)
 }
 
-func (n *Node) remove(element int) {
+func remove(element int, n *Node) *Node {
+	if n == nil {
+		return nil
+	}
+
 	if n.element == element {
 
-		return
+		if n.left == nil && n.right == nil {
+			return nil
+		} else if n.left == nil {
+			//remove(element, n.right)
+			return n.right
+		} else if n.right == nil {
+			//remove(element, n.left)
+			return n.left
+		}
+
+		min := n.right.smallest()
+		n.SetElement(min.element)
+		n.SetRight(*remove(min.element, n.right))
+
 	} else if n.element >= element {
-		n.GetLeft().remove(element)
+		if n.left == nil {
+			return nil
+		}
+		left := remove(element, n.left)
+		if left == nil {
+			return nil
+		}
+		n.SetLeft(*left)
 	} else {
-		n.GetRight().remove(element)
+		if n.right == nil {
+			return nil
+		}
+		right := remove(element, n.left)
+		if right == nil {
+			return nil
+		}
+		n.SetRight(*right)
 	}
+	return n
 }
 
 func (t *Tree) Find(element int) *Node {
