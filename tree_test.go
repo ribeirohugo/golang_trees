@@ -258,3 +258,26 @@ func TestTree_PosOrder(t *testing.T) {
 		t.Errorf("Wrong PosOrder output returned. \nGot: %d; \nWant: %d.", collection, expectedCollection)
 	}
 }
+
+func TestTree_ToString(t *testing.T) {
+	testTree := Tree{}
+
+	testTree.Insert(20)
+	testTree.Insert(10)
+	testTree.Insert(21)
+	testTree.Insert(22)
+	testTree.Insert(11)
+	testTree.Insert(9)
+
+	expected := `|	|-------22
+|-------21
+20
+|	|-------11
+|-------10
+|	|-------9
+`
+
+	if expected != testTree.String() {
+		t.Errorf("Wrong ToString() output. \nGot: %s; \nWant: %s.", testTree.String(), expected)
+	}
+}

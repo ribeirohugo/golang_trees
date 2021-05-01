@@ -1,5 +1,7 @@
 package golang_trees
 
+import "strconv"
+
 type Tree struct {
 	root *Node
 }
@@ -249,4 +251,35 @@ func (n *Node) posOrder(collection []int) []int {
 	collection = append(collection, n.element)
 
 	return collection
+}
+
+func (t *Tree) String() string {
+	if t.root == nil {
+		return ""
+	}
+
+	return t.root.toString(0, "")
+}
+
+func (n *Node) toString(level int, str string) string {
+	nextLevel := level + 1
+
+	if n.right != nil {
+		str = n.right.toString(nextLevel, str)
+	}
+
+	if level != 0 {
+		for i := 0; i < level-1; i++ {
+			str = str + "|\t"
+		}
+		str = str + "|-------" + strconv.Itoa(n.element) + "\n"
+	} else {
+		str = str + strconv.Itoa(n.element) + "\n"
+	}
+
+	if n.left != nil {
+		str = n.left.toString(nextLevel, str)
+	}
+
+	return str
 }
