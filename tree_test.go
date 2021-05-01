@@ -33,6 +33,40 @@ func TestTree(t *testing.T) {
 	}
 }
 
+func TestNode_Nodes(t *testing.T) {
+	testTree := Tree{}
+	testTree.Insert(20)
+
+	expected := 5
+	leftNode := Node{}
+	leftNode.SetElement(expected)
+
+	if leftNode.element != expected {
+		t.Errorf("Wrong SetElement element. Got: %d; Want: %d.", leftNode.element, expected)
+	}
+
+	expected = 21
+	rightNode := NewNode(nil, expected, nil)
+	if rightNode.element != expected {
+		t.Errorf("Wrong NewNode element returned. Got: %d; Want: %d.", rightNode.element, expected)
+	}
+
+	testTree.root.SetLeft(leftNode)
+	testTree.root.SetRight(rightNode)
+
+	expected = 5
+	element := testTree.root.left.element
+	if expected != element {
+		t.Errorf("Wrong SetLeft element returned. Got: %d; Want: %d.", element, expected)
+	}
+
+	expected = 21
+	element = testTree.root.right.element
+	if expected != element {
+		t.Errorf("Wrong SetRight element returned. Got: %d; Want: %d.", element, expected)
+	}
+}
+
 func TestTree_IsEmpty(t *testing.T) {
 	testTree := Tree{}
 
