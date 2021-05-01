@@ -1,4 +1,4 @@
-package tree
+package golang_trees
 
 type Tree struct {
 	root *Node
