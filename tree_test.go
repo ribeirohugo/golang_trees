@@ -1,6 +1,10 @@
 package golang_trees
 
-import "testing"
+import (
+	"fmt"
+	"reflect"
+	"testing"
+)
 
 func TestTree(t *testing.T) {
 	root := 20
@@ -146,4 +150,26 @@ func TestTree_Remove(t *testing.T) {
 	if node != nil {
 		t.Errorf("Wrong node returned after removing element. It shoud be nil.")
 	}
+}
+
+func TestTree_PreOrder(t *testing.T) {
+	testTree := Tree{}
+
+	testTree.Insert(20)
+	testTree.Insert(10)
+	testTree.Insert(21)
+	testTree.Insert(22)
+	testTree.Insert(11)
+	testTree.Insert(9)
+
+	collection := testTree.PreOrder()
+
+	expectedCollection := []int{20, 10, 9, 11, 21, 22}
+
+	if !reflect.DeepEqual(collection, expectedCollection) {
+		t.Errorf("Wrong height after removing element. \nGot: %d; \nWant: %d.", collection, expectedCollection)
+	}
+
+	fmt.Println(expectedCollection)
+	fmt.Println(collection)
 }
