@@ -18,7 +18,8 @@ Following methods are currently available to manage a Binary Search Tree.
 * ``Remove(element int)`` - Removes an existing element from the BST.
 * ``PreOrder()`` - Returns a ``[]int`` slice using pre-order algorithm.
 * ``InOrder()`` - Returns a ``[]int`` slice using in-order algorithm.
-* ``PosOrder`` - Returns ``[]int`` slice using pos-order algorithm.
+* ``PosOrder()`` - Returns ``[]int`` slice using pos-order algorithm.
+* ``String()`` - Returns tree readable``string`` output.
 
 ### 1.2. Example
 
