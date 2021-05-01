@@ -281,3 +281,40 @@ func TestTree_ToString(t *testing.T) {
 		t.Errorf("Wrong ToString() output. \nGot: %s; \nWant: %s.", testTree.String(), expected)
 	}
 }
+
+func TestTree_GetNodesByLevel(t *testing.T) {
+	testTree := Tree{}
+
+	testTree.Insert(20)
+	testTree.Insert(9)
+	testTree.Insert(22)
+
+	testTree.Insert(8)
+	testTree.Insert(10)
+
+	testTree.Insert(21)
+	testTree.Insert(23)
+
+	nodes := testTree.GetNodesByLevel(2)
+
+	node1 := 8
+	node2 := 10
+	node3 := 21
+	node4 := 23
+
+	if nodes[0].element != node1 {
+		t.Errorf("Wrong ToString() output. \nGot: %d; \nWant: %d.", nodes[0].element, node1)
+	}
+
+	if nodes[1].element != node2 {
+		t.Errorf("Wrong ToString() output. \nGot: %d; \nWant: %d.", nodes[1].element, node2)
+	}
+
+	if nodes[2].element != node3 {
+		t.Errorf("Wrong ToString() output. \nGot: %d; \nWant: %d.", nodes[2].element, node3)
+	}
+
+	if nodes[3].element != node4 {
+		t.Errorf("Wrong ToString() output. \nGot: %d; \nWant: %d.", nodes[3].element, node4)
+	}
+}

@@ -1,6 +1,8 @@
 package golang_trees
 
-import "strconv"
+import (
+	"strconv"
+)
 
 type Tree struct {
 	root *Node
@@ -282,4 +284,31 @@ func (n *Node) toString(level int, str string) string {
 	}
 
 	return str
+}
+
+func (t *Tree) GetNodesByLevel(level int) []*Node {
+
+	return t.root.getNodesByLevel(level, 0, []*Node{})
+}
+
+func (n *Node) getNodesByLevel(level int, currentLevel int, nodes []*Node) []*Node {
+	nextLevel := currentLevel + 1
+
+	resultNodes := nodes
+
+	if level == currentLevel {
+		resultNodes = append(resultNodes, n)
+	}
+
+	if n.left != nil {
+		resultNodes = n.left.getNodesByLevel(level, nextLevel, resultNodes)
+		//resultNodes = append(resultNodes, leftNodes[len(leftNodes)-1])
+	}
+
+	if n.right != nil {
+		resultNodes = n.right.getNodesByLevel(level, nextLevel, resultNodes)
+		//resultNodes = append(resultNodes, rightNodes[len(rightNodes)-1])
+	}
+
+	return resultNodes
 }
