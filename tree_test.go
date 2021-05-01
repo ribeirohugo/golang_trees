@@ -1,7 +1,6 @@
 package golang_trees
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
@@ -155,6 +154,10 @@ func TestTree_Remove(t *testing.T) {
 func TestTree_PreOrder(t *testing.T) {
 	testTree := Tree{}
 
+	if !reflect.DeepEqual(testTree, Tree{}) {
+		t.Errorf("Wrong PreOrder() returned value. It shoud return nil.")
+	}
+
 	testTree.Insert(20)
 	testTree.Insert(10)
 	testTree.Insert(21)
@@ -167,9 +170,29 @@ func TestTree_PreOrder(t *testing.T) {
 	expectedCollection := []int{20, 10, 9, 11, 21, 22}
 
 	if !reflect.DeepEqual(collection, expectedCollection) {
-		t.Errorf("Wrong height after removing element. \nGot: %d; \nWant: %d.", collection, expectedCollection)
+		t.Errorf("Wrong PreOrder output returned. \nGot: %d; \nWant: %d.", collection, expectedCollection)
+	}
+}
+
+func TestTree_InOrder(t *testing.T) {
+	testTree := Tree{}
+
+	if !reflect.DeepEqual(testTree, Tree{}) {
+		t.Errorf("Wrong InOrder() returned value. It shoud return nil.")
 	}
 
-	fmt.Println(expectedCollection)
-	fmt.Println(collection)
+	testTree.Insert(20)
+	testTree.Insert(10)
+	testTree.Insert(21)
+	testTree.Insert(22)
+	testTree.Insert(11)
+	testTree.Insert(9)
+
+	collection := testTree.InOrder()
+
+	expectedCollection := []int{9, 10, 11, 20, 21, 22}
+
+	if !reflect.DeepEqual(collection, expectedCollection) {
+		t.Errorf("Wrong InOrder output returned. \nGot: %d; \nWant: %d.", collection, expectedCollection)
+	}
 }
