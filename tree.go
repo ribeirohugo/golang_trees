@@ -158,11 +158,13 @@ func (n *Node) height(level int) int {
 }
 
 func (t *Tree) PreOrder() []int {
+	var collection []int
+
 	if t.root == nil {
-		return []int{}
+		return collection
 	}
 
-	return t.root.preOrder([]int{})
+	return t.root.preOrder(collection)
 }
 
 func (n *Node) preOrder(collection []int) []int {
@@ -210,6 +212,41 @@ func (n *Node) inOrder(collection []int) []int {
 	if n.right != nil {
 		collection = n.right.inOrder(collection)
 	}
+
+	return collection
+}
+
+func (t *Tree) PosOrder() []int {
+	var collection []int
+
+	if t.root == nil {
+		return collection
+	}
+
+	if t.root.left != nil {
+		collection = t.root.left.posOrder(collection)
+	}
+
+	if t.root.right != nil {
+		collection = t.root.right.posOrder(collection)
+	}
+
+	collection = append(collection, t.root.element)
+
+	return collection
+}
+
+func (n *Node) posOrder(collection []int) []int {
+
+	if n.left != nil {
+		collection = n.left.posOrder(collection)
+	}
+
+	if n.right != nil {
+		collection = n.right.posOrder(collection)
+	}
+
+	collection = append(collection, n.element)
 
 	return collection
 }

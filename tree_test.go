@@ -154,8 +154,10 @@ func TestTree_Remove(t *testing.T) {
 func TestTree_PreOrder(t *testing.T) {
 	testTree := Tree{}
 
-	if !reflect.DeepEqual(testTree, Tree{}) {
-		t.Errorf("Wrong PreOrder() returned value. It shoud return nil.")
+	var expected []int
+
+	if !reflect.DeepEqual(testTree.PreOrder(), expected) {
+		t.Errorf("Wrong PreOrder() empty output returned. \nGot: %d; \nWant: %d.", testTree.PreOrder(), expected)
 	}
 
 	testTree.Insert(20)
@@ -177,8 +179,10 @@ func TestTree_PreOrder(t *testing.T) {
 func TestTree_InOrder(t *testing.T) {
 	testTree := Tree{}
 
-	if !reflect.DeepEqual(testTree, Tree{}) {
-		t.Errorf("Wrong InOrder() returned value. It shoud return nil.")
+	var expected []int
+
+	if !reflect.DeepEqual(testTree.InOrder(), expected) {
+		t.Errorf("Wrong InOrder() empty output returned. \nGot: %d; \nWant: %d.", testTree.InOrder(), expected)
 	}
 
 	testTree.Insert(20)
@@ -194,5 +198,29 @@ func TestTree_InOrder(t *testing.T) {
 
 	if !reflect.DeepEqual(collection, expectedCollection) {
 		t.Errorf("Wrong InOrder output returned. \nGot: %d; \nWant: %d.", collection, expectedCollection)
+	}
+}
+
+func TestTree_PosOrder(t *testing.T) {
+	testTree := Tree{}
+
+	var expected []int
+
+	if !reflect.DeepEqual(testTree.PosOrder(), expected) {
+		t.Errorf("Wrong PosOrder() empty output returned. \nGot: %d; \nWant: %d.", testTree.PosOrder(), expected)
+	}
+
+	testTree.Insert(20)
+	testTree.Insert(10)
+	testTree.Insert(21)
+	testTree.Insert(22)
+	testTree.Insert(11)
+	testTree.Insert(9)
+
+	collection := testTree.PosOrder()
+	expectedCollection := []int{9, 11, 10, 22, 21, 20}
+
+	if !reflect.DeepEqual(collection, expectedCollection) {
+		t.Errorf("Wrong PosOrder output returned. \nGot: %d; \nWant: %d.", collection, expectedCollection)
 	}
 }
