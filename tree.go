@@ -138,10 +138,10 @@ func (n *Node) find(element int) *Node {
 
 func (t *Tree) Height() int {
 	if t.IsEmpty() {
-		return -1
+		return 0
 	}
 
-	return t.root.height(0)
+	return t.root.height(1)
 }
 
 func (n *Node) height(level int) int {
@@ -302,13 +302,33 @@ func (n *Node) getNodesByLevel(level int, currentLevel int, nodes []*Node) []*No
 
 	if n.left != nil {
 		resultNodes = n.left.getNodesByLevel(level, nextLevel, resultNodes)
-		//resultNodes = append(resultNodes, leftNodes[len(leftNodes)-1])
 	}
 
 	if n.right != nil {
 		resultNodes = n.right.getNodesByLevel(level, nextLevel, resultNodes)
-		//resultNodes = append(resultNodes, rightNodes[len(rightNodes)-1])
 	}
 
 	return resultNodes
+}
+
+func (t *Tree) Diameter() int {
+
+	if t.root == nil {
+		return 0
+	} else if t.root.left == nil && t.root.right == nil {
+		return 1
+	}
+
+	var left, right int
+
+	if t.root.left != nil {
+		left = t.root.left.height(1)
+	}
+	if t.root.right != nil {
+		right = t.root.right.height(1)
+	}
+
+	diameter := left + right + 1
+
+	return diameter
 }

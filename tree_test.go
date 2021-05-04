@@ -120,15 +120,20 @@ func TestTree_Find(t *testing.T) {
 func TestTree_Height(t *testing.T) {
 	testTree := Tree{}
 
-	expected := -1
+	expected := 0
 	heightResult := testTree.Height()
 	if heightResult != expected {
 		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
 	}
 
 	testTree.Insert(20)
+	expected = 1
+	heightResult = testTree.Height()
+	if heightResult != expected {
+		t.Errorf("Wrong height element return. Got: %d; Want: %d.", heightResult, expected)
+	}
+
 	testTree.Insert(5)
-	testTree.Insert(15)
 
 	expected = 2
 	heightResult = testTree.Height()
@@ -317,4 +322,43 @@ func TestTree_GetNodesByLevel(t *testing.T) {
 	if nodes[3].element != node4 {
 		t.Errorf("Wrong ToString() output. \nGot: %d; \nWant: %d.", nodes[3].element, node4)
 	}
+}
+
+func TestTree_Diameter(t *testing.T) {
+	testTree := Tree{}
+
+	diameter := testTree.Diameter()
+	expected := 0
+	if diameter != expected {
+		t.Errorf("Wrong diameter return. \nGot: %d; \nWant: %d.", diameter, expected)
+	}
+
+	testTree.Insert(20)
+
+	diameter = testTree.Diameter()
+	expected = 1
+	if diameter != expected {
+		t.Errorf("Wrong diameter return. \nGot: %d; \nWant: %d.", diameter, expected)
+	}
+
+	testTree.Insert(10)
+	testTree.Insert(30)
+
+	diameter = testTree.Diameter()
+	expected = 3
+	if diameter != expected {
+		t.Errorf("Wrong diameter return. \nGot: %d; \nWant: %d.", diameter, expected)
+	}
+
+	testTree.Insert(8)
+	testTree.Insert(12)
+	testTree.Insert(25)
+	testTree.Insert(32)
+
+	diameter = testTree.Diameter()
+	expected = 5
+	if diameter != expected {
+		t.Errorf("Wrong diameter return. \nGot: %d; \nWant: %d.", diameter, expected)
+	}
+
 }
