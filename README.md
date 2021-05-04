@@ -20,7 +20,8 @@ Following methods are currently available to manage a Binary Search Tree.
 * ``InOrder()`` - Returns a ``[]int`` slice using in-order algorithm.
 * ``PosOrder()`` - Returns ``[]int`` slice using pos-order algorithm.
 * ``String()`` - Returns tree readable``string`` output.
-* ``String()`` - Returns tree readable``string`` output.
+* ``Height()`` - Returns Tree height ``int`` value. Returns ``0`` if tree is empty.
+* ``Diameter()`` - Returns Tree diameter ``int`` value. Returns ``0`` if tree is empty.
 * ``GetNodesByLevel(level int)`` - Returns a ``[]*Node`` with all Nodes from the inserted level number.
 
 ### 1.2. Example
