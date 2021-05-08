@@ -1,6 +1,6 @@
-package heap
+package linked_list
 
-type Heap struct {
+type LinkedList struct {
 	root *Element
 	size int
 }
@@ -10,14 +10,18 @@ type Element struct {
 	child *Element
 }
 
-func (h *Heap) IsEmpty() bool {
+func New() *LinkedList {
+	return &LinkedList{}
+}
+
+func (h *LinkedList) IsEmpty() bool {
 	if h.root == nil {
 		return true
 	}
 	return false
 }
 
-func (h *Heap) Insert(value interface{}) {
+func (h *LinkedList) Insert(value interface{}) {
 	h.size++
 
 	if h.root == nil {
@@ -44,7 +48,7 @@ func (e *Element) insert(value interface{}) {
 	e.child.insert(value)
 }
 
-func (h *Heap) RemoveMin() interface{} {
+func (h *LinkedList) RemoveMin() interface{} {
 	if h.root == nil {
 		return nil
 	}
@@ -61,11 +65,11 @@ func (h *Heap) RemoveMin() interface{} {
 	return value
 }
 
-func (h *Heap) Size() int {
+func (h *LinkedList) Size() int {
 	return h.size
 }
 
-func (h *Heap) RecountSize() int {
+func (h *LinkedList) RecountSize() int {
 	if h.root == nil {
 		return 0
 	}

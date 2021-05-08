@@ -1,11 +1,11 @@
-package heap
+package linked_list
 
 import (
 	"testing"
 )
 
 func TestHeap_IsEmpty(t *testing.T) {
-	heapTest := Heap{}
+	heapTest := LinkedList{}
 
 	result := heapTest.IsEmpty()
 	if !result {
@@ -20,7 +20,7 @@ func TestHeap_IsEmpty(t *testing.T) {
 }
 
 func TestHeap_Size(t *testing.T) {
-	heapTest := Heap{}
+	heapTest := LinkedList{}
 
 	size := heapTest.Size()
 	expected := 0
@@ -57,7 +57,7 @@ func TestHeap_Size(t *testing.T) {
 }
 
 func TestHeap_RecountSize(t *testing.T) {
-	heapTest := Heap{}
+	heapTest := LinkedList{}
 
 	size := heapTest.RecountSize()
 	expected := 0
@@ -94,7 +94,7 @@ func TestHeap_RecountSize(t *testing.T) {
 }
 
 func TestHeap_RemoveMin(t *testing.T) {
-	heapTest := Heap{}
+	heapTest := LinkedList{}
 
 	value := heapTest.RemoveMin()
 	if value != nil {
