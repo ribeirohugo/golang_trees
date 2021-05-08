@@ -1,4 +1,4 @@
-package golang_trees
+package tree
 
 import (
 	"reflect"
