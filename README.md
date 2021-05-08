@@ -12,7 +12,7 @@ Following methods are currently available to manage a Binary Search Tree.
 
 * ``NewTree()`` - Creates a new BST.
 * ``Root()`` - Returns BST root node.
-* ``IsEmpty()`` - Return a ``true`` if the tree doesn't have any node.
+* ``IsEmpty()`` - Returns a ``true`` if the tree doesn't have any node.
 * ``Smallest()`` - Returns the smallest element number in the BST.
 * ``Insert(element int)`` - Inserts a new element in the BST.
 * ``Remove(element int)`` - Removes an existing element from the BST.
@@ -32,4 +32,29 @@ A new BST can be created as in the following example:
 tree := NewTree()
 
 tree.Insert(20)
+```
+
+## 2. Linked List
+
+Linked List (BST) data structure developed using Golang.
+
+### 2.1. Methods
+
+Following methods are currently available to manage a Linked List.
+
+* ``New()`` - Creates a new Linked List and returns its pointer.
+* ``IsEmpty()`` - Returns a ``true`` if the Linked List doesn't have any element.
+* ``Insert(element int)`` - Inserts a new element in the Linked List.
+* ``RemoveMin(element int)`` - Removes the first element from Linked List and returns it value.
+* ``Size()`` - Returns the number of elements in the List.
+* ``RecountSize()`` - Uses an algorithm to calculate and return Linked List the number of elements.
+
+### 2.2. Example
+
+A new Linked List can be created as in the following example:
+
+```
+list := linked_list.New()
+
+list.Insert(20)
 ```
