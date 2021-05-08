@@ -36,7 +36,7 @@ tree.Insert(20)
 
 ## 2. Linked List
 
-Linked List (BST) data structure developed using Golang.
+Linked List data structure developed using Golang.
 
 ### 2.1. Methods
 
