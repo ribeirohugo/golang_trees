@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/ribeirohugo/golang_trees.svg?branch=main)](https://travis-ci.com/ribeirohugo/golang_trees)
+
 # Golang Trees
 
 Golang repository with Go Binary Trees examples and resources.
